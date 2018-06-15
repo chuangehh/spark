@@ -30,8 +30,13 @@ object WordCount {
     // print word count
     println(list.foreach(println(_)))
 
+    sc.textFile("/opt/module/spark-2.1.1-bin-hadoop2.7/agent.log").map((text) => {
+      var words = text.split(" ");
+      ((words(1), words(4)), 1)
+    }).reduceByKey(_ + _).sortBy( _._2,false).takeOrdered(3)
+
     // stop
-    sc.stop()
+    //    sc.stop()
   }
 
 }

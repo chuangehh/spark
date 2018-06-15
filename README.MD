@@ -114,3 +114,27 @@
     ```
 * master参数如果不写则为local模式
 * shell中自动创建SparkContext，引用为sc,可在scala中直接使用
+
+### RDD 弹性分布式计算集
+* 不可变：在某一个RDD上执行转换操作，不会直接修改这个RDD数据，产生一个新的RDD
+* 可分区：一个RDD的数据是分区存放的，所有分区都存在不同的Excutor中
+* 弹性： 
+    * 存储弹性
+    * 计算弹性
+    * 分片弹性
+    * 容错弹性
+
+### 创建RDD
+* 从集合中创建RDD
+    ```
+    makeRDD[T: ClassTag](seq: Seq[T],numSlices: Int = defaultParallelism)
+    parallelize[T: ClassTag](seq: Seq[T],numSlices: Int = defaultParallelism) 
+    ```
+* 默认分片机制 
+    ```
+        conf.getInt("spark.default.parallelism", math.max(totalCoreCount.get(), 2))
+    ```
+
+### RDD转换
+* 对于数值型RDD,定义在RDD中
+* 对于kv型RDD,定义在PairRDDFunctions中
