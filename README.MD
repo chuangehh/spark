@@ -138,3 +138,9 @@
 ### RDD转换
 * 对于数值型RDD,定义在RDD中
 * 对于kv型RDD,定义在PairRDDFunctions中
+
+
+### RDD运行机制
+* stage划分,通过宽窄依赖划分
+    * 窄依赖就是父RDD的每个分区只有一个孩子
+    * 宽依赖就是父RDD的每个分区有多个孩子

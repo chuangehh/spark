@@ -1,0 +1,9 @@
+1、Kafka创建Topic的命令
+bin/kafka-topics.sh --create --zookeeper hadoop101:2181,hadoop102:2181,hadoop103:2181 --replication-factor 2 --partitions 2 --topic spark_stream_source
+bin/kafka-topics.sh --create --zookeeper hadoop101:2181,hadoop102:2181,hadoop103:2181 --replication-factor 2 --partitions 2 --topic spark_stream_target
+					
+2、Producer Client
+bin/kafka-console-producer.sh --broker-list hadoop101:9092, hadoop102:9092, hadoop103:9092 --topic spark_stream_source
+		
+3、Consumer Client
+bin/kafka-console-consumer.sh --bootstrap-server hadoop101:9092, hadoop102:9092, hadoop103:9092 --topic spark_stream_target

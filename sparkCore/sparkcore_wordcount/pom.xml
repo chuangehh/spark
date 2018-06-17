@@ -11,6 +11,14 @@
 
     <artifactId>sparkcore_wordcount</artifactId>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10</version>
+        </dependency>
 
+    </dependencies>
 
 </project>
