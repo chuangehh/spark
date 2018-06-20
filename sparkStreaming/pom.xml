@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>wordcount</module>
+        <module>streamingKafka</module>
     </modules>
 
 
@@ -29,6 +30,13 @@
             <artifactId>spark-streaming_2.11</artifactId>
             <version>${spark.version}</version>
             <!--<scope>provided</scope>-->
+        </dependency>
+
+        <!-- 提供对象连接池的一种方式 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.5.0</version>
         </dependency>
 
     </dependencies>

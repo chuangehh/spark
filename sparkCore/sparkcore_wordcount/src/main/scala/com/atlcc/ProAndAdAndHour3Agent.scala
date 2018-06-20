@@ -61,6 +61,7 @@ object ProAndAdAndHour3Agent {
 //    }.saveAsTextFile("proAndAdAndHour3Agent")
 
     // close sparkContext
+    pro_hour2AdSum.checkpoint()
     sc.stop()
   }
 }
