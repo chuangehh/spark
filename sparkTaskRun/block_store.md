@@ -32,6 +32,30 @@
         
 ###  启动过程分析
 * 各个存储模块在 SparkEnv.create中完成
-    
+   ```scala
+    // 看起来像是在所有的cluster node上都创建了BlockManagerMasterActor
+    // 仔细看registerOrLookup函数的实现
+    val blockManagerMaster = new BlockManagerMaster(registerOrLookupEndpoint(
+        BlockManagerMaster.DRIVER_ENDPOINT_NAME,
+        new BlockManagerMasterEndpoint(rpcEnv, isLocal, conf, listenerBus)),
+        conf, isDriver)
+   ```
+   ```scala
+      // 如果当前节点是driver则创建这个actor，否则建立到driver的连接
+      def registerOrLookupEndpoint(
+            name: String, endpointCreator: => RpcEndpoint):
+          RpcEndpointRef = {
+          if (isDriver) {
+            logInfo("Registering " + name)
+            rpcEnv.setupEndpoint(name, endpointCreator)
+          } else {
+            RpcUtils.makeDriverRef(name, conf, rpcEnv)
+          }
+      }  
+   ```
+* BlockManager需要向BlockManagerMaster发起注册   
+
+### 通信层
+* 
       
         
