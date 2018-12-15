@@ -13,6 +13,7 @@
         <module>sparkSql</module>
         <module>sparkStreaming</module>
         <module>sparkTaskRun</module>
+        <module>antlrCalculator</module>
     </modules>
 
     <properties>
